@@ -7,7 +7,7 @@ showcase:
   enable: true
   title: "Hello, I’m Chiso."
   subtitle: "Front-End Developer"
-  description: "I work a Masters in Financial Analysis student at <a target='_blank' href='https://www.london.edu/masters-degrees/masters-in-financial-analysis/'>London Business School</a>, a software development company in Switzerland. And I am a Raditian. You get the idea where theme name comes from. Keep cool, stay in touch. You can download this theme from <a target='_blank' href='https://github.com/radity/raditian-free-hugo-theme'>github</a>."
+  description: "I am a Masters in Financial Analysis student at <a target='_blank' href='https://www.london.edu/masters-degrees/masters-in-financial-analysis/'>London Business School</a>, a software development company in Switzerland. And I am a Raditian. You get the idea where theme name comes from. Keep cool, stay in touch. You can download this theme from <a target='_blank' href='https://github.com/radity/raditian-free-hugo-theme'>github</a>."
   image:
     alt: "Showcase keyboard and mouse image"
     x: "img/showcase/showcase.png"
@@ -102,17 +102,17 @@ experience:
     URL: "#"
 
   items:
-    - title: "Sr. Front-End Developer"
-      company: "Radity"
-      duration: "Feb 2011 - Sep 2019"
+    - title: "General Partner"
+      company: "GEIST Capital Partners"
+      duration: "Jan 2018 - Present"
 
-    - title: "Sr. Front-End Developer"
-      company: "Textic"
-      duration: "Apr 2010 - Jan 2011"
+    - title: "Mechanical Engineering Designer"
+      company: "Eclipse Automation"
+      duration: "Feb 2019 - Aug 2020"
 
-    - title: "Jr. Front-End Developer"
-      company: "Cyberse"
-      duration: "Jun 2009 - Mar 2010"
+    - title: "Mechanical Engineering Intern"
+      company: "Husky Injection Molding"
+      duration: "May 2015 - Aug 2016"
 
 # Client & Work
 client_and_work:

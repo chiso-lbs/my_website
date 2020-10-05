@@ -2,4 +2,4 @@
 
 **Man** like _21 Savage_
 
-Move like an opp, you must be an opp
+If you move like an *opp*, then you must be an *opp*

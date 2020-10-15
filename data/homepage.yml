@@ -6,7 +6,7 @@ homepage:
 showcase:
   enable: true
   title: "Hello, I’m Chiso."
-  subtitle: "Your Next Financial Analyst"
+  subtitle: "Ex-Engineer. Your Next Financial Analyst"
   description: "I am a Masters in Financial Analysis student at <a target='_blank' href='https://www.london.edu/masters-degrees/masters-in-financial-analysis/'>London Business School</a>, one of the foremost research universities in Finance. And I am Canadian/Nigerian. This is my portfolio website, where you can learn a little bit about me, my interests and projects I have worked on."
   image:
     alt: "Showcase keyboard and mouse image"
@@ -31,15 +31,15 @@ showcase:
     - icon: "twitter"
       URL: "https://twitter.com/chiso__"
 
-    - icon: "spotify"
-      URL: "https://open.spotify.com/user/11156373714"
-
     - icon: "behance"
-      URL: "#"
-
+      URL: "https://open.spotify.com/user/11156373714"
 
     - icon: "instagram"
       URL: "https://www.instagram.com/chiso__/"
+      
+    - icon: "instagram"
+      URL: "https://www.goodreads.com/user/show/18199373-chiso"
+      
 
 
 
@@ -48,22 +48,24 @@ about:
   enable: true
   title: "Who am I?"
   content: '<p class="lead">
-    I am back, after a few days of vacationing with family. Weather was awesome, the beach was
-    full of nasty jelly-fish, yuk! All-in-all, life has been good. I hope life has been as
-    good for all of you.
+    The first thing to know about me is that I am a Bird, 
+    and not a Frog (not yet a Polymath). I prefer to learn broadly, 
+    across many disciplines, rather than observe the details of a sole field. 
     </p>
     <p class="lead">
-    My area of focus lies in designing web and mobile products, user research as well as
-    leading of design & front-end teams. I enjoy designing and coding the UI as much as
-    talking with users to iterate and improve the experiences that reach business goals.
+    My areas of interest span Engineering, Finance, Psychology, Philosophy & History. Recently, 
+    I have worked on analysing some data with R, which you will see below. Also, in addition
+    to school work, I have been keeping up with the status of the porfolio companies in my investment
+    partnership. A redacted version of my very first letter to partners can also be found below.
     </p>'
   button:
     icon: "icon-smile-fill"
     btnText: "About Me"
-    URL: "https://www.linkedin.com/company/radity/"
+    URL: "https://www.linkedin.com/in/okorochiso/"
   image:
     x: "img/who-am-i/user-picture.png"
     _2x: "img/who-am-i/user-picture@2x.png"
+    
 
 # education
 education:
@@ -177,7 +179,7 @@ client_and_work:
 
 # testimonial
 testimonial:
-  enable: true
+  enable: false
   title: "Testimonials"
   items:
     - name: "Daniel Jordan"

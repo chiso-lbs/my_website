@@ -6,8 +6,8 @@ homepage:
 showcase:
   enable: true
   title: "Hello, I’m Chiso."
-  subtitle: "Front-End Developer"
-  description: "I am a Masters in Financial Analysis student at <a target='_blank' href='https://www.london.edu/masters-degrees/masters-in-financial-analysis/'>London Business School</a>, a software development company in Switzerland. And I am a Raditian. You get the idea where theme name comes from. Keep cool, stay in touch. You can download this theme from <a target='_blank' href='https://github.com/radity/raditian-free-hugo-theme'>github</a>."
+  subtitle: "Your Next Financial Analyst"
+  description: "I am a Masters in Financial Analysis student at <a target='_blank' href='https://www.london.edu/masters-degrees/masters-in-financial-analysis/'>London Business School</a>, one of the foremost research universities in Finance. And I am Canadian/Nigerian. This is my portfolio website, where you can learn a little bit about me, my interests and projects I have worked on."
   image:
     alt: "Showcase keyboard and mouse image"
     x: "img/showcase/showcase.png"
@@ -19,7 +19,7 @@ showcase:
   button:
     icon: "icon-mail-fill"
     btnText: "Contact"
-    URL: "https://radity.com/en/contact/"
+    URL: "https://chiso.netlify.app/#contact"
 
   socialLinks:
     - icon: "linkedin"
@@ -37,20 +37,11 @@ showcase:
     - icon: "behance"
       URL: "#"
 
-    - icon: "youtube"
-      URL: "#"
 
     - icon: "instagram"
       URL: "https://www.instagram.com/chiso__/"
 
-    - icon: "facebook"
-      URL: "#"
 
-    - icon: "codepen"
-      URL: "#"
-
-    - icon: "yelp"
-      URL: "#"
 
 # about
 about:

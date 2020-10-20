@@ -18,5 +18,15 @@ You can embed an R code chunk like this:
 summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.98 ## 3rd Qu.</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>/post/us_yield/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/us_yield/</guid>
+      <description>Yield Curve inversionEvery so often, we hear warnings from commentators on the “inverted yield curve” and its predictive power with respect to recessions. An explainer what a inverted yield curve is can be found here. If you’d rather listen to something, here is a great podcast from NPR on yield curve indicators
+In addition, many articles and commentators think that, e.g., Yield curve inversion is viewed as a harbinger of recession.</description>
+    </item>
+    
   </channel>
 </rss>

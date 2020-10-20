@@ -31,15 +31,10 @@ showcase:
     - icon: "twitter"
       URL: "https://twitter.com/chiso__"
 
-    - icon: "behance"
-      URL: "https://open.spotify.com/user/11156373714"
-
     - icon: "instagram"
       URL: "https://www.instagram.com/chiso__/"
       
-    - icon: "instagram"
-      URL: "https://www.goodreads.com/user/show/18199373-chiso"
-      
+
 
 
 
@@ -92,7 +87,7 @@ experience:
   button2:
     icon: "icon-profile-fill"
     btnText: "Download My Resume"
-    URL: "#"
+    URL: "https://drive.google.com/file/d/1F1-pMh6IxKlwpVSf9cKZoQq8Ev_bpmCM/view?usp=sharing"
 
   items:
     - title: "General Partner"
@@ -144,23 +139,23 @@ client_and_work:
   #     alt: "Ztos"
 
   works:
-    - title: "US Yield Curve"
-      description: "We have been receiving a lot of requests for a Finance Kit recently due to the popularity of Fintech."
+    - title: "Inaugral Year-End Letter To Partners"
+      description: "Before GEIST was GEIST: My first full-year letter to partners, detailing fund returns and future fee structure"
       button:
         icon: "icon-arrow-right"
         btnText: "Explore"
-        URL: "portfolio/2015-07-23-r-rmarkdown"
+        URL: "https://drive.google.com/file/d/128rkwDU1_rgFmTufUEIIImry8GWkxRYp/view?usp=sharing"
       image:
         x: "img/works/radity-finance.jpg"
         _2x: "img/works/radity-finance@2x.jpg"
       is_even: true
 
-    - title: "Swiss Fintech Website"
-      description: "The Swiss Finance + Technology Association is the leading FinTech hub in Switzerland."
+    - title: "US Yield Curve"
+      description: "A short analysis of the US Yield Curve as a predictor of economic recessions"
       button:
         icon: "icon-arrow-right"
         btnText: "Explore"
-        URL: "#"
+        URL: "post/us_yield"
       image:
         x: "img/works/swissfintech.jpg"
         _2x: "img/works/swissfintech@2x.jpg"
@@ -215,21 +210,22 @@ contact:
     message: "Type Your Message Here"
   phone:
     title: "Phone Number"
-    number: "+41 (44) 505 10 99"
+    number: "N/A"
   email:
     title: "Email"
-    email: '<a href="mailto:team@radity.com">team@radity.com</a>'
+    email: '<a href="mailto:cokoro.mfa2021@london.edu">cokoro.mfa2021@london.edu</a>'
   address:
     title: "Address"
-    address: "Radity GmbH<br />Max-Bill-Platz 5, 8050 Zürich"
+    address: "London Business School<br />Regent's Park, NW1 4SA London"
   button:
     icon: "icon-mail-fill"
     btnText: "Send Message"
+    URL: "mailto:cokoro.mfa2021@london.edu"
 
 # newsletter
 newsletter:
   enable: true
-  title: "Newsletter subscription"
+  title: "Coming Soon - Newsletter subscription"
   success_message: "Successfully subscribed"
   error_message: "Error while subscribing."
   note: "We'll never share your email with anyone else."

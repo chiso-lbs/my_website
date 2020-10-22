@@ -10,11 +10,11 @@ showcase:
   description: "I am a Masters in Financial Analysis student at <a target='_blank' href='https://www.london.edu/masters-degrees/masters-in-financial-analysis/'>London Business School</a>, one of the foremost research universities in Finance. And I am Canadian/Nigerian. This is my portfolio website, where you can learn a little bit about me, my interests and projects I have worked on."
   image:
     alt: "Showcase keyboard and mouse image"
-    x: "img/showcase/showcase.png"
+    x: "img/showcase/greeks.jpg"
     _2x: "img/showcase/showcase@2x.png"
   imageMobile:
     alt: "Showcase keyboard and mouse image"
-    x: "img/showcase/showcase-mobile.jpg"
+    x: "img/showcase/greeks.jpg"
 
   button:
     icon: "icon-mail-fill"
@@ -146,8 +146,8 @@ client_and_work:
         btnText: "Explore"
         URL: "https://drive.google.com/file/d/128rkwDU1_rgFmTufUEIIImry8GWkxRYp/view?usp=sharing"
       image:
-        x: "img/works/radity-finance.jpg"
-        _2x: "img/works/radity-finance@2x.jpg"
+        x: "img/works/geist_logo.jpg"
+        _2x: "img/works/geist_logo@2x.jpg"
       is_even: true
 
     - title: "US Yield Curve"
@@ -155,21 +155,21 @@ client_and_work:
       button:
         icon: "icon-arrow-right"
         btnText: "Explore"
-        URL: "post/us_yield"
+        URL: "https://drive.google.com/file/d/1CCHZiYdesuP-bFakrL8J9fcgnaVTeI9U/view?usp=sharing"
       image:
-        x: "img/works/swissfintech.jpg"
-        _2x: "img/works/swissfintech@2x.jpg"
+        x: "img/works/yieldcurve.jpg"
+        _2x: "img/works/yieldcurve@2x.jpg"
       is_even: false
 
-    - title: "Inaugral Year-End Letter To Partners"
-      description: "Robo Advisor is a Swiss Wealth Manager and wants to create the best digital experience for its UNHW clients across the world. We started with a whiteboard."
+    - title: "Quality of Life Analysis"
+      description: "A brief look into Gapminder data, to visualize relationships among various quality of life metrics."
       button:
         icon: "icon-arrow-right"
         btnText: "Explore"
-        URL: "#"
+        URL: "https://drive.google.com/file/d/1UwI6EbjFfb0HToPdz2d8Ku6nE4M8qQyH/view?usp=sharing"
       image:
-        x: "img/works/robo-advisor.jpg"
-        _2x: "img/works/robo-advisor@2x.jpg"
+        x: "img/works/worldbank.jpg"
+        _2x: "img/works/worldbank@2x.jpg"
       is_even: true
 
 # testimonial

@@ -20,12 +20,23 @@ summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 2
     
     <item>
       <title></title>
+      <link>/post/analysis_worldbank/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/post/analysis_worldbank/</guid>
+      <description>Gapminder AnalysedTo analyse some measures of quality of life, I joined a few dataframes from the Worldbank with more data than the ‘gapminder’ package. Specifically:
+Life expectancy at birth (life_expectancy_years.csv)GDP per capita in constant 2010 US$ (https://data.worldbank.org/indicator/NY.GDP.PCAP.KD)Female fertility: The number of babies per woman (https://data.worldbank.org/indicator/SP.DYN.TFRT.IN)Primary school enrollment as % of children attending primary school (https://data.worldbank.org/indicator/SE.PRM.NENR)Mortality rate, for under 5, per 1000 live births (https://data.</description>
+    </item>
+    
+    <item>
+      <title></title>
       <link>/post/us_yield/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>/post/us_yield/</guid>
-      <description>Yield Curve inversionEvery so often, we hear warnings from commentators on the “inverted yield curve” and its predictive power with respect to recessions. An explainer what a inverted yield curve is can be found here. If you’d rather listen to something, here is a great podcast from NPR on yield curve indicators
-In addition, many articles and commentators think that, e.g., Yield curve inversion is viewed as a harbinger of recession.</description>
+      <description>Yield Curve inversionEvery so often, we hear warnings from commentators on the “inverted yield curve” and its predictive power with respect to recessions. An explainer what a inverted yield curve is can be found here.
+But are inversions are truly harbingers of recessions?
+To analyse this, I will look at US data and use the FRED database to download historical yield curve rates, and plot the yield curves since 1999 to see when the yield curves flatten.</description>
     </item>
     
   </channel>

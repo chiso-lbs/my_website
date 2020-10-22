@@ -1,0 +1,243 @@
+---
+output:
+  html_document:
+    theme: flatly
+    highlight: zenburn
+    number_sections: yes
+    toc: yes
+    toc_float: yes
+    code_folding: show
+  pdf_document:
+    toc: yes
+---
+
+
+```{r, setup, include=FALSE}
+knitr::opts_chunk$set(
+  message = FALSE, 
+  warning = FALSE, 
+  tidy=FALSE,     # display code as typed
+  size="small")   # slightly smaller font for code
+options(digits = 3)
+
+# default figure size
+knitr::opts_chunk$set(
+  fig.width=6.75, 
+  fig.height=6.75,
+  fig.align = "center"
+)
+```
+
+
+```{r load-libraries, include=FALSE}
+library(tidyverse)  # Load ggplot2, dplyr, and all the other tidyverse packages
+library(mosaic)
+library(ggthemes)
+library(lubridate)
+library(here)
+library(skimr)
+library(janitor)
+library(httr)
+library(readxl)
+library(vroom)
+```
+
+
+# Gapminder Analysed
+
+To analyse some measures of quality of life, I joined a few dataframes from the Worldbank with more data than the 'gapminder' package. Specifically: 
+
+
+- Life expectancy at birth (life_expectancy_years.csv)
+- GDP per capita in constant 2010 US$ (https://data.worldbank.org/indicator/NY.GDP.PCAP.KD)
+- Female fertility: The number of babies per woman (https://data.worldbank.org/indicator/SP.DYN.TFRT.IN)
+- Primary school enrollment as % of children attending primary school (https://data.worldbank.org/indicator/SE.PRM.NENR)
+- Mortality rate, for under 5, per 1000 live births (https://data.worldbank.org/indicator/SH.DYN.MORT)
+- HIV prevalence (adults_with_hiv_percent_age_15_49.csv): The estimated number of people living with HIV per 100 population of age group 15-49.
+
+The relevant World Bank indicators are `SP.DYN.TFRT.IN`, `SE.PRM.NENR`, `NY.GDP.PCAP.KD`, and `SH.DYN.MORT`
+
+The data, after being cleaned, was used to generate some visual representations of relationships between various qulaity of life variables.
+
+```{r, get_data, cache=TRUE}
+
+# load gapminder HIV data
+hiv <- read_csv(here::here("data","adults_with_hiv_percent_age_15_49.csv"))
+life_expectancy <- read_csv(here::here("data","life_expectancy_years.csv"))
+
+# get World bank data using wbstats
+indicators <- c("SP.DYN.TFRT.IN","SE.PRM.NENR", "SH.DYN.MORT", "NY.GDP.PCAP.KD")
+
+
+library(wbstats)
+
+worldbank_data <- wb_data(country="countries_only", #countries only- no aggregates like Latin America, Europe, etc.
+                          indicator = indicators, 
+                          start_date = 1960, 
+                          end_date = 2016)
+
+# get a dataframe of information regarding countries, indicators, sources, regions, indicator topics, lending types, income levels,  from the World Bank API 
+countries <-  wbstats::wb_cachelist$countries
+
+```
+
+After joining the datframes, the data was tidied. [join operations](http://r4ds.had.co.nz/relational-data.html). T
+
+```{r, cache=TRUE}
+
+tidyhiv <- hiv %>%
+  pivot_longer(cols = !country, names_to = "Year", values_to = "HIVper100") #pivots every column not named "country"
+
+tidyhiv$Year = as.double(tidyhiv$Year)
+
+tidy_life_exp <- life_expectancy %>%
+  pivot_longer(cols = !country, names_to = "Year", values_to = "lifeExp") #pivots every column not named "country"
+
+tidy_life_exp$Year = as.double(tidy_life_exp$Year)
+
+regions <- countries %>%
+  select(c('country', 'region')) %>%
+  filter(region != 'Aggregates')
+
+long_wb_data <- worldbank_data %>%
+  select(c(3:8)) %>%
+  #pivot_longer(cols = !c(1:2), names_to = "Factor", values_to = "Value") %>%
+  rename(Year = date, 'fertility_rate' = 'SP.DYN.TFRT.IN', 'school_enroll' = 'SE.PRM.NENR', 'u5_mort' =  'SH.DYN.MORT', 'GDPperCap' = 'NY.GDP.PCAP.KD') %>%
+  left_join(regions, by = 'country')
+
+
+agg_data <- long_wb_data %>%
+  left_join(tidy_life_exp, by = c('country', 'Year')) %>%
+  left_join(tidyhiv, by = c('country', 'Year')) %>%
+  group_by(country) %>%
+  arrange(country, Year) %>% #sorts by country, and then by year in ascending order
+  relocate(region, .after = country) #%>% #moves the Region column to after the Country column
+
+  
+  
+  
+```
+
+The HIV, Life Expectancy and World Bank data all had observations starting and ending in different years. To create a common timeline, _'Left_join'_ was chosen in combining the dataframes, so that the World Bank data served as the basis for analysis. 
+
+
+## Relationship between HIV prevalence and life expectancy
+
+```{r, cache=TRUE}
+
+agg_data %>%
+  select(1:3,8:9) %>%
+  na.exclude %>%
+  ggplot(aes(x=HIVper100, y = lifeExp))+
+  geom_point()+
+  geom_smooth(color="red") +
+  facet_wrap(~region, scales = 'free') +
+  theme_bw() +
+  labs (
+    title = "HIV Not a National Death Sentence", subtitle = "Relationship Between HIV Prevalence and National Life Expectancy", x = 'HIV Per 100 Adults (15-49)', y = 'National Life Expectancy'
+  )
+
+```
+
+
+## Relationship between fertility rate and GDP per capita?
+
+```{r, cache=TRUE}
+
+agg_data %>%
+  select(1:4,7) %>%
+  na.exclude %>%
+  ggplot(aes(x=fertility_rate, y = GDPperCap))+
+  geom_point()+
+  geom_smooth(color="red") +
+  facet_wrap(~region, scales = 'free') + 
+  theme_bw() +
+  labs (
+    title = "More Kids, Less Productivity", subtitle = "Relationship Between Fertility Rate and GDP Per Capita", x = 'Fertility Rate', y = 'GDP Per Capita'
+  )
+
+```
+
+## Regions with the most observations with missing HIV data?
+
+```{r, cache=TRUE}
+
+agg_data %>%
+  relocate(region, .before = country) %>%
+  select(region, HIVper100) %>%
+  filter(is.na(HIVper100)) %>%
+  group_by(region) %>%
+  count(region, sort = TRUE) %>%
+  ggplot(aes(x=n, y = reorder(region, n)))+
+  geom_col(fill = "white", colour = "red")+
+  theme_bw() +
+  labs (
+    title = "Europe Lagging in HIV Observations", subtitle = "Regions Ordered By Missing HIV Data", x = 'Number of Missing Observations', y = 'Region'
+  ) + 
+  theme_hc()
+
+```
+
+## Change in mortality rate for under 5 per region?
+
+```{r, cache=TRUE}
+
+best_improve <- agg_data %>%
+  select(1:3,6) %>% #select country, region,year & mort rate
+  na.exclude %>%
+  group_by(region, country) %>%
+  summarize (mort_range = (u5_mort[Year == min(Year)] - u5_mort[Year == max(Year)])/u5_mort[Year == min(Year)]) %>% #for each country, find the mort. rate in the earliest year, and the mort. rate in the most recent year. Calculate % difference
+  ungroup() %>%
+  group_by(region) %>%
+  arrange(desc(mort_range), .by_group = TRUE)%>%
+  slice(1:5)%>% #top 5 countries per region
+  ungroup()
+
+least_improve <- agg_data %>%
+  select(1:3,6) %>%
+  na.exclude %>%
+  group_by(region, country) %>%
+  summarize (mort_range = (u5_mort[Year == min(Year)] - u5_mort[Year == max(Year)])/u5_mort[Year == min(Year)]) %>%
+  ungroup() %>%
+  group_by(region) %>%
+  arrange((mort_range), .by_group = TRUE)%>%
+  slice(1:5)%>%
+  ungroup()
+
+  ggplot(best_improve, aes(x=mort_range, y = reorder(country, mort_range))) +
+  geom_col(fill = "springgreen4")+
+  facet_wrap(~region, scales = "free") +
+    scale_x_continuous(labels = scales::percent) + 
+    theme_hc() + 
+    labs (
+    title = "Best of Class", subtitle = "Top 5 Countries With Improved Mortality Rates", x = 'Improvement in Mortality Rate (%)', y = 'Country'
+  ) + theme(axis.text.x = element_text(angle = 90))
+  
+  ggplot(least_improve, aes(x=mort_range, y = reorder(country, -mort_range))) +
+  geom_col(fill = "brown")+
+  facet_wrap(~region, scales = "free") + scale_x_continuous(labels = scales::percent) +
+  theme_hc() +
+  labs (
+    title = "Worst of Class", subtitle = "Countries With Least Improved Mortality Rates", x = 'Improvement in Mortality Rate (%)', y = 'Country'
+  ) + theme(axis.text.x = element_text(angle = 90))
+
+```
+
+## Relationship between primary school enrollment and fertility rate
+
+```{r, cache=TRUE}
+
+agg_data %>%
+  select(1:3,5,7) %>%
+  na.exclude %>%
+  ggplot(aes(x=fertility_rate, y = school_enroll))+
+  geom_point()+
+  geom_smooth(color="red") +
+  facet_wrap(~region, scales = 'free') +
+  theme_bw() +
+  labs (
+    title = "More Kids, Higher Enrollment? Think Again...", subtitle = 'Relationship Between School Enrollment & Fertility Rate', x = 'Fertility Rate (Per Woman)', y = 'Primary School Enrollment (% Net)'
+  )
+
+```
+

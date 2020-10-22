@@ -79,7 +79,7 @@ education:
 experience:
   enable: true
   title: "Experience"
-  description: "A dash of experience in Mechanical Engineering roles, plus a short history of investing money for a small partnership in undervalues securities and distressed bonds."
+  description: "A dash of experience in Mechanical Engineering roles, plus a short history of investing money for a small partnership in undervalued securities and distressed bonds."
   button:
     icon: "icon-linkedin-fill"
     btnText: "Linkedin"

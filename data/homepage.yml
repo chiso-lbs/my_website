@@ -11,7 +11,7 @@ showcase:
   image:
     alt: "Showcase keyboard and mouse image"
     x: "img/showcase/greeks.jpg"
-    _2x: "img/showcase/showcase@2x.png"
+    _2x: "img/showcase/greeks@2x.png"
   imageMobile:
     alt: "Showcase keyboard and mouse image"
     x: "img/showcase/greeks.jpg"
